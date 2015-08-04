@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import math
+import os
+import string
 
 # generates both 3D ring points for gl_server, as well as 2D ring points for the map in Processing
 # Running it will spit out both JSON and opc.led lines. You can comment out the relevant print() line
@@ -49,12 +51,29 @@ def ring(start_index, end_index, phys_theta_v, phys_sphere_radius, phys_led_spac
 
 			# Print gl_server JSON directive
 			#print( "  {\"point\": [" + str(phys_cur_x) + ", " + str(phys_cur_y) + ", " + str(phys_cur_z) +"]},")
+			# glconf.write( "  {\"point\": [" + str(phys_cur_x) + ", " + str(phys_cur_y) + ", " + str(phys_cur_z) +"]},\n")
+			glconf_lines.append("  {\"point\": [" + str(phys_cur_x) + ", " + str(phys_cur_y) + ", " + str(phys_cur_z) +"]}")
 
 			# print Processing OPC layout directive
-			print( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");" )
-
+			#print( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");" )
+			#opc_ledconf.write( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");\n" )
+			opcconf_lines.append( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");\n" )
 
 # Main Begin
+try:
+	os.remove("element_viz/opc_leds.pde")
+except:
+	print("Processing OPC layout file doesn't exist, creating.")
+opc_ledconf = open("element_viz/opc_leds.pde", "a")
+
+try:
+	os.remove("element_viz/element_parametric.json")
+except:
+	print("GL Server 3D layout file doesn't exist, creating.")
+glconf = open("element_viz/element_parametric.json", "a")
+
+glconf_lines = []
+opcconf_lines = []
 
 
 # Northern Hemisphere
@@ -78,6 +97,6 @@ ring(start_index = 340, end_index = 370, phys_theta_v = 1.9581, phys_sphere_radi
 ring(start_index = 371, end_index = 398, phys_theta_v = 2.0872, phys_sphere_radius = 0.9652, phys_led_spacing = 0.123, map_ring_rad = 35, map_width = 100, map_height = 100, is_clockwise = 0, is_circle = 0, theta_h_offset = 0)
 ring(start_index = 399, end_index = 419, phys_theta_v = 2.2163, phys_sphere_radius = 0.9652, phys_led_spacing = 0.123, map_ring_rad = 37, map_width = 100, map_height = 100, is_clockwise = 1, is_circle = 0, theta_h_offset = 0)
 
-
-
+opc_ledconf.write("void create_opc_leds()\n{\n" + string.join(opcconf_lines) + "\n}\n")
+glconf.write("[\n" + ",\n".join(glconf_lines) + "\n]")
 

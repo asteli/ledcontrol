@@ -1,3 +1,5 @@
+void create_opc_leds()
+{
 opc.led(0, 50, 55);
 opc.led(1, 53, 53);
 opc.led(2, 54, 48);
@@ -418,3 +420,4 @@ opc.led(416, 82, 68);
 opc.led(417, 84, 63);
 opc.led(418, 86, 57);
 opc.led(419, 86, 51);
+}

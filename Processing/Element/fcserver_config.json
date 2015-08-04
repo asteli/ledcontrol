@@ -10,18 +10,9 @@
     "devices": [
         {
             "type": "fadecandy",
-            "serial": "FFFFFFFFFFFF00180017200214134D44",
-            "led": false,
+            "serial": "OYRVEMCCRJYVWBIT",
             "map": [
                 [ 0, 0, 0, 512 ]
-            ]
-        },
-        {
-            "type": "fadecandy",
-            "serial": "FFFFFFFFFFFF0021003B200314134D44",
-            "map": [
-                [ 0, 512, 0, 64 ],
-                [ 0, 576, 128, 32, "bgr" ]
             ]
         }
     ]

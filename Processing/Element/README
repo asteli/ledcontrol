@@ -1,0 +1,15 @@
+Element LED Array Visualization code:
+
+To run a simulation of the array, do:
+./run_sim
+
+To drive fadecandy with the visualization running, do:
+./run_leds
+
+If you're running a new fadecandy board, be sure to update the fcserver configuration JSON to use the new device serial number.
+
+Sphere and ring parameters are contained within element_parametric.py. This script generates all the layout data for the sphere,
+as well as the 2D mapping for the Processing sketch. The generator gets called every time ./run_leds or ./run_sim are executed,
+ensuring that the layout data is always fresh.
+
+

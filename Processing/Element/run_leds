@@ -1,0 +1,11 @@
+#!/bin/bash
+
+./element_parametric.py
+
+set -m
+
+trap 'kill %%' EXIT
+
+../../fadecandy/bin/fcserver-osx ./fcserver_config.json & processing-java --run --force --sketch=`pwd`/element_viz --output=`pwd`/element_viz_output
+
+wait
