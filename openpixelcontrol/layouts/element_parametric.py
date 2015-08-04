@@ -19,9 +19,9 @@ def ring(start_index, end_index, phys_theta_v, phys_sphere_radius, phys_led_spac
 		# calculate arc start theta, with arc centered at 0 radians
 		# flip theta to the other side of zero if we're going to be indexing counterclockwise
 		if(is_clockwise):
-			cur_start_theta = ( -1 * ( ( (end_index - start_index)  * (element_theta_step) * phys_sphere_radius) ) / 2 ) + theta_h_offset
+			cur_start_theta = ( -1 * ( ( (end_index - start_index + 1)  * (element_theta_step) * phys_sphere_radius) ) / 2 ) + theta_h_offset
 		else:
-			cur_start_theta = (  1 * ( ( (end_index - start_index)  * (element_theta_step) * phys_sphere_radius) ) / 2 ) + theta_h_offset
+			cur_start_theta = (  1 * ( ( (end_index - start_index + 1)  * (element_theta_step) * phys_sphere_radius) ) / 2 ) + theta_h_offset
 
 	cur_phys_ring_rad = math.sin(phys_theta_v)
 
@@ -48,10 +48,10 @@ def ring(start_index, end_index, phys_theta_v, phys_sphere_radius, phys_led_spac
 			map_cur_y = int( (math.cos(cur_element_theta) * map_ring_rad) + (map_height / 2) )
 
 			# Print gl_server JSON directive
-			#print( "  {\"point\": [" + str(phys_cur_x) + ", " + str(phys_cur_y) + ", " + str(phys_cur_z) +"]},")
+			print( "  {\"point\": [" + str(phys_cur_x) + ", " + str(phys_cur_y) + ", " + str(phys_cur_z) +"]},")
 
 			# print Processing OPC layout directive
-			print( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");" )
+			#print( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");" )
 
 
 # Main Begin
