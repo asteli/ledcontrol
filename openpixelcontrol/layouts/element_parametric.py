@@ -3,6 +3,8 @@
 import math
 
 # generates both 3D ring points for gl_server, as well as 2D ring points for the map in Processing
+# Running it will spit out both JSON and opc.led lines. You can comment out the relevant print() line
+#  or better yet, rewrite the output section to split this data neatly into different textfiles.
 
 def ring(start_index, end_index, phys_theta_v, phys_sphere_radius, phys_led_spacing, map_ring_rad, map_width, map_height, is_clockwise, is_circle, theta_h_offset):
 
@@ -45,12 +47,11 @@ def ring(start_index, end_index, phys_theta_v, phys_sphere_radius, phys_led_spac
 			map_cur_x = int( (math.sin(cur_element_theta) * map_ring_rad) + (map_width  / 2) )
 			map_cur_y = int( (math.cos(cur_element_theta) * map_ring_rad) + (map_height / 2) )
 
-			#
-			# example JSON string:
-			#   {"point": [-0.00, -0.26, 1.98]},	
+			# Print gl_server JSON directive
 			print( "  {\"point\": [" + str(phys_cur_x) + ", " + str(phys_cur_y) + ", " + str(phys_cur_z) +"]},")
 
-			#print( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");" )
+			# print Processing OPC layout directive
+			print( "opc.led(" + str(cur_element_index) + ", " + str(map_cur_x) + ", " + str(map_cur_y) + ");" )
 
 
 # Main Begin
