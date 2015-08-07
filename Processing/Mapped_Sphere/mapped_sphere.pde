@@ -31,22 +31,9 @@ void setup() {
   tapInput = new TapInput();
 }
 
-<<<<<<< HEAD
-void draw() {
-  background(0);
-=======
-int hue_1 = 0;
-float theta_1 = 0;
-int hue_2 = 0;
-float theta_2 = 0;
-int hue_3 = 0;
-float theta_3 = 0;
-
-
 void draw()
 {
   background(30);
->>>>>>> c71aed2822d77ff77f15507816b5e46a1621deeb
   
   switch(selectedSequence) {
     case 0:
