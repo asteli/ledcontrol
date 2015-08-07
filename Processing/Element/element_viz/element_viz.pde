@@ -13,7 +13,7 @@ void setup()
   size(400, 400);
   colorMode(HSB);
   background(50);
-  selectedSequence = 0;
+  selectedSequence = 2;
 
   // Connect to the local instance of fcserver
   opc = new OPC(this, "127.0.0.1", 7890);
@@ -22,7 +22,7 @@ void setup()
   create_opc_leds();
   
   threeArcDesign = new ThreeArcDesign();
-  movingConcentrics = new MovingConcentrics(650);
+  movingConcentrics = new MovingConcentrics(350);
   wrappedText = new WrappedText("SING");
   strobe = new Strobe();
   tapInput = new TapInput();
@@ -40,7 +40,7 @@ void draw() {
       movingConcentrics.run();
       break;
     case 2:
-      wrappedText.animateLetters(1);
+      wrappedText.animateLettersLine(1);
       break;
     case 3:
       strobe.setStartTime();
