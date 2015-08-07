@@ -28,9 +28,6 @@ for cur_strand in range(0, n_strands) :
 		cur_y = sphere_radius * math.cos(theta_h) * math.sin(theta_v)
 		cur_z = sphere_radius * math.cos(theta_v)
 
-		#print("\nmade a light\n")
-		#print('  {"point": [%.2f, %.2f, %.2f]}' % (cur_x, cur_y, cur_z))
-
 
 
 		lines.append('  {"point": [%.2f, %.2f, %.2f]}' % (cur_x, cur_y, cur_z))

@@ -3,7 +3,7 @@ OPC opc;
 void setup()
 {
   noStroke();
-  size(100, 100);
+  size(400, 400);
   colorMode(HSB);
   background(50);
 
@@ -31,8 +31,7 @@ int rad5 = 50;
 
 void draw()
 {
-  background(50);
-  
+  background(5, 5, 5);
   
   
   if (hue_1 > 0)
@@ -183,7 +182,7 @@ void draw()
   {
     rad5++;
   }
-
+  
 
 
 }
