@@ -1,0 +1,56 @@
+Element Parametric Generator
+
+Generates opc.led() directives for Processing (2D mapping)
+Generates strings for JSON file for gl_server simulation package (3D physical mockup)
+
+Inputs:
+
+Ring[index] = ( start index, end_index, theta_v, phys_sphere_radius,
+				phys_led_spacing, map_ring_rad, is_clockwise_true,
+				is_circle_true, theta_h_offset)
+
+Start and end theta_h should be exactly the same between 3D sim and 2D map.
+
+
+
+Calculating start and end theta (centering)
+
+Get arc width: based on 3D & spacing info: 
+
+Get arc angle of one element at current radius
+
+number_elements = (end_index - start_index + 1) 
+
+cur_phys_radius = (sin(theta_v) * phys_sphere_radius)
+
+2*pi*r / phys_led_spacing = 2*pi / cur_element_theta_radians
+
+phys_led_spacing / 2*pi*r = cur_element_theta_radians / 2*pi radians
+
+(phys_led_spacing / r = cur_element_theta_radians) ## Whoa. Really?
+
+arc_theta = (number_elements - 1)  * element_theta_radians 		#note fencepost correction
+
+start_theta = -1 * ( arc_theta / 2 )
+
+
+
+substitute everything in for an awesome equation
+
+
+cur_start_theta = -1 * (( (end_index - start_index)  * (phys_led_spacing / (sin(theta_v) * phys_sphere_radius) ) ) / 2 ) 
+
+  {"point": [-0.00, -0.26, 1.98]},
+
+
+
+
+  ### in the ring loop ###
+
+  i in range (start index, end index)
+
+  say i = start index.
+
+  i (start index) - start_index = 0
+
+  cur-elem-theta = start_theta + theta_step * (current_element_index - start_index)

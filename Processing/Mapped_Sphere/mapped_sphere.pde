@@ -84,7 +84,7 @@ float theta_3 = 0;
 
 void draw()
 {
-  background(0);
+  background(30);
   
   if (hue_1 > 0)
   {
