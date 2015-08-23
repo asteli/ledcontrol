@@ -5,6 +5,7 @@ TapInput tapInput;
 ThreeArcDesign threeArcDesign;
 MovingConcentrics movingConcentrics;
 WrappedText wrappedText;
+RotatingArcsDesign rotatingArcs;
 Strobe strobe;
 
 void setup()
@@ -13,7 +14,7 @@ void setup()
   size(400, 400);
   colorMode(HSB);
   background(50);
-  selectedSequence = 2;
+  selectedSequence = 4;
 
   // Connect to the local instance of fcserver
   opc = new OPC(this, "127.0.0.1", 7890);
@@ -23,6 +24,7 @@ void setup()
   
   threeArcDesign = new ThreeArcDesign();
   movingConcentrics = new MovingConcentrics(350);
+  rotatingArcs = new RotatingArcsDesign();
   wrappedText = new WrappedText("SING");
   strobe = new Strobe();
   tapInput = new TapInput();
@@ -40,11 +42,14 @@ void draw() {
       movingConcentrics.run();
       break;
     case 2:
-      wrappedText.animateLettersLine(1);
+      wrappedText.animateLetters(1);
       break;
     case 3:
       strobe.setStartTime();
       strobe.pulseLoop();
+      break;
+    case 4:
+      rotatingArcs.run();
       break;
     default:
       threeArcDesign.run();

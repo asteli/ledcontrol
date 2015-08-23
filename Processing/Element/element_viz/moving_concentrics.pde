@@ -9,7 +9,7 @@ class MovingConcentrics {
   
   void run() {
     for(int i = 0; i < numCircles; i++) {
-      generateCirclePairWithAlphaAndOffset(255 - (i*110), (i*40));
+      generateCirclePairWithAlphaAndOffset(255 - (i*110), (i*30));
     }
     if(ellipseWidth > 0) {
       ellipseWidth -= 15;
@@ -25,7 +25,7 @@ class MovingConcentrics {
   void generateCirclePairWithAlphaAndOffset(int alpha, int offSet) {
     noFill();
     stroke(alpha, 255);
-    strokeWeight(20);
+    strokeWeight(15);
     if(offSet == 0) {
       ellipse(width/2, height/2, ellipseWidth + offSet, ellipseWidth);
     } else {
